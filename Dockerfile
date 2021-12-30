@@ -29,6 +29,7 @@ RUN apt-get update && apt-get install -y openssl curl openssh-client sudo shelli
 EXPOSE 4200
 
 # Setup the default user.
+# test
 #RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1001 ubuntu
 #USER ubuntu
 #WORKDIR /home/ubuntu
