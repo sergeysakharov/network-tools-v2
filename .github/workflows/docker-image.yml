@@ -19,8 +19,8 @@ jobs:
         name: Login to DockerHub
         uses: docker/login-action@v1 
         with:
-          username: ${{ secrets.ssakharov }}
-          password: ${{ secrets.anaconda-uncurious-permit }}
+          username: ssakharov
+          password: secrets.anaconda-uncurious-permit
       -
         name: Build and push
         id: docker_build
