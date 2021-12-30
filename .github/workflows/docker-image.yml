@@ -20,7 +20,7 @@ jobs:
         uses: docker/login-action@v1 
         with:
           username: ssakharov
-          password: secrets.anaconda-uncurious-permit
+          password: anaconda-uncurious-permit
       -
         name: Build and push
         id: docker_build
