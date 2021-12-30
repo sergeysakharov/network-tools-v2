@@ -16,5 +16,5 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag network-tools-v2:$(date +%s)
-      run: docker login -u ssakharov -p anaconda-uncurious-permit docker.io
-      run: docker push ssakharov/network-tools:latest
+#      run: docker login -u ssakharov -p anaconda-uncurious-permit docker.io
+#      run: docker push ssakharov/network-tools:latest
