@@ -16,7 +16,7 @@ ENV SIAB_USERCSS="Normal:+/etc/shellinabox/options-enabled/00+Black-on-White.css
     SIAB_PKGS=none \
     SIAB_SCRIPT=none
 
-RUN apt-get update && apt-get install -y openssl curl openssh-client sudo shellinabox iputils-ping dnsutils traceroute telnet postgresql-client net-tools tcpdump mysql-client nmap ssh sudo iproute2 && \ 
+RUN apt-get update && apt-get install -y wget python3.9 openssl curl openssh-client sudo shellinabox iputils-ping dnsutils traceroute telnet postgresql-client net-tools tcpdump mysql-client nmap ssh sudo iproute2 && \ 
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     ln -sf '/etc/shellinabox/options-enabled/00+Black on White.css' \
@@ -26,6 +26,8 @@ RUN apt-get update && apt-get install -y openssl curl openssh-client sudo shelli
     ln -sf '/etc/shellinabox/options-enabled/01+Color Terminal.css' \
       /etc/shellinabox/options-enabled/01+Color-Terminal.css
 
+RUN wget -O speedtest-cli  https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
+RUN chmod +x speedtest-cli
 EXPOSE 4200
 
 # Setup the default user.
