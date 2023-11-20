@@ -1,5 +1,10 @@
 FROM ubuntu:latest
 
+#RUN export TZ=Europe/Paris
+#RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+
+
 ENV SIAB_USERCSS="Normal:+/etc/shellinabox/options-enabled/00+Black-on-White.css,Reverse:-/etc/shellinabox/options-enabled/00_White-On-Black.css;Colors:+/etc/shellinabox/options-enabled/01+Color-Terminal.css,Monochrome:-/etc/shellinabox/options-enabled/01_Monochrome.css" \
     SIAB_PORT=4200 \
     SIAB_ADDUSER=true \
@@ -16,7 +21,9 @@ ENV SIAB_USERCSS="Normal:+/etc/shellinabox/options-enabled/00+Black-on-White.css
     SIAB_PKGS=none \
     SIAB_SCRIPT=none
 
-RUN apt-get update && apt-get install -y wget python3.9 openssl curl openssh-client sudo shellinabox iputils-ping dnsutils traceroute telnet postgresql-client net-tools tcpdump mysql-client nmap ssh sudo iproute2 && \ 
+RUN apt-get update && DEBIAN_FRONTEND="noninteractive" TZ="Europe/Kyiv" apt-get install -y tzdata
+
+RUN apt-get update && apt-get install -y awscli vim mc openvpn unzip wget python3.9 openssl curl openssh-client sudo shellinabox iputils-ping dnsutils traceroute telnet postgresql-client net-tools tcpdump mysql-client nmap ssh sudo iproute2 && \ 
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     ln -sf '/etc/shellinabox/options-enabled/00+Black on White.css' \
@@ -38,7 +45,7 @@ EXPOSE 4200
 #RUN echo 'user:P@ssw0rd' | chpasswd
 #USER user
 #WORKDIR /home/user
-#t
+
 VOLUME /etc/shellinabox /var/log/supervisor /home
 
 ADD assets/entrypoint.sh /usr/local/sbin/
