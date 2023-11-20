@@ -38,7 +38,7 @@ EXPOSE 4200
 #RUN echo 'user:P@ssw0rd' | chpasswd
 #USER user
 #WORKDIR /home/user
-
+#t
 VOLUME /etc/shellinabox /var/log/supervisor /home
 
 ADD assets/entrypoint.sh /usr/local/sbin/
